@@ -1,6 +1,6 @@
 const { response } = require('../app');
 const USERS = require('../Model/userModel');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const admin = require('../config/firebase'); 
 const nodemailer = require('nodemailer')
@@ -44,24 +44,22 @@ const sendOTPSMS = (mobileNumber, otp) => {
 };
 
 const doSignup = (req, res) => {
-  
   const otp = generateOTP();
+  const saltRounds = 10;
 
-  bcrypt.hash(req.body.password, parseInt(process.env.SALT_ROUNDS), function (err, hash) {
-    if (err) {
-      return res.status(500).json({ message: 'Error hashing password' });
-    }
+  try {
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hash = bcrypt.hashSync(req.body.password, salt);
 
     const formattedPhoneNumber = req.body.mobileNumber.startsWith('+91') ? req.body.mobileNumber : `+91${req.body.mobileNumber}`;
 
     const newUser = new USERS({
       Name: req.body.Name,
       email: req.body.email,
-      mobileNumber: formattedPhoneNumber, 
+      mobileNumber: formattedPhoneNumber,
       password: hash,
       otp: otp,
     });
-
 
     newUser.save()
       .then(async (response) => {
@@ -70,20 +68,26 @@ const doSignup = (req, res) => {
           await sendOTPSMS(req.body.mobileNumber, otp);
           res.status(200).json({ user: response });
         } catch (error) {
-          console.log(error);
+          console.error('Error sending OTP:', error);
           res.status(500).json({ message: 'Error sending OTP' });
         }
       })
       .catch(error => {
-        console.log(error);
+        console.error('Error saving user:', error);
         if (error.code === 11000) {
           res.status(500).json({ message: `${req.body.email} is already existing` });
         } else {
           res.status(500).json({ message: 'Something went wrong' });
         }
       });
-  });
+  } catch (error) {
+    console.error('Error hashing password:', error);
+    res.status(500).json({ message: 'Error hashing password' });
+  }
 };
+
+
+
 
 const doLogin = async (req, res) => {
   const { uid, email, displayName, idToken } = req.body;
@@ -122,8 +126,8 @@ const doLogin = async (req, res) => {
       const userData = await USERS.findOne({ email });
 
       if (userData) {
-        bcrypt.compare(password, userData.password, (err, result) => {
-          if (result) {
+        const isMatch = bcrypt.compareSync(password, userData.password);
+          if (isMatch) {
             userData.password = undefined;
             const options = {
               expiresIn: "2d",
@@ -134,7 +138,7 @@ const doLogin = async (req, res) => {
           } else {
             res.status(401).json({ message: "Invalid credentials" });
           }
-        });
+        
       } else {
         res.status(401).json({ message: "Invalid credentials" });
       }
