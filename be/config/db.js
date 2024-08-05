@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
     try {
-      const conn = await mongoose.connect(`mongodb://127.0.0.1:27017/reactproject`, {
+      const conn = await mongoose.connect('mongodb+srv://shivilpogba:kS6hiZyyVj6vTnGv@cluster0.6512haz.mongodb.net/', {
         useNewUrlParser: true,
       });
       console.log(`MongoDB Connected: {conn.connection.host}`);
