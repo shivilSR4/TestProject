@@ -1,0 +1,13 @@
+.home-box img{
+height: 60px;
+margin-block: 1rem;
+}
+
+.home-box p{
+    font-weight: lighter;
+    text-transform: capitalize
+}
+
+.home-box{
+    color: var(--brand-dark);
+}

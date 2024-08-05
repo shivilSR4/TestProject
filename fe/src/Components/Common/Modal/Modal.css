@@ -1,0 +1,43 @@
+.modal-container {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.7); /* Corrected syntax for rgba */
+    top: 0;
+    z-index: 10;
+  }
+  
+  .modal-box {
+    background-color: var(--brand-white);
+    min-width: 22%;
+    min-height: 40%;
+    max-width: 70%;
+    max-height: 70%;
+    border-radius: 10px;
+    position: relative;
+  }
+  
+  .modal-heading {
+    height: 40px;
+    background-color: var(--brand-brown);
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    text-align: start;
+  }
+  
+  .modal-close-icon {
+    position: absolute;
+    top: -25px;
+    right: -22px;
+    border-radius: 50%;
+    z-index: 5;
+    transition: transform 2s ease-out; /* Corrected property */
+  }
+  
+  .modal-close-icon:hover {
+    transform: scale(1);
+    background-color: black;
+  }
+  

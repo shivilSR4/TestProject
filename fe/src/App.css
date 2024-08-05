@@ -1,0 +1,16 @@
+.common-button{
+    padding: .3rem .7rem;
+    background-color: var(--brand-white);
+    color: var(--brand-dark);
+    border: 1px thin var( --brand-brown2);
+    border-radius: 5px;
+}
+
+.common-button:hover{
+    background-color: var(--brand-brown);
+    color: var(--brand-white);
+
+}
+.common-button:active{
+    transform: scale(2);
+}

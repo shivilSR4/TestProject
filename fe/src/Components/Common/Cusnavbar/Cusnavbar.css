@@ -1,0 +1,49 @@
+
+
+.navbar {
+    padding: 0;
+    background-color: var(--brand-light);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.nav-item {
+    color: var(--brand-dark);
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-inline: 2rem;
+}
+
+.nav-item:hover {
+    background-color: var(--brand-brown);
+    color: var(--brand-white);
+    border-bottom: 2px solid var(--brand-white);
+    cursor: pointer;
+}
+
+.collapse {
+    height:auto; /* Ensuring it doesn't conflict with the content inside */
+}
+
+.navbar-brand {
+    color: var(--brand-dark); /* Corrected from "columns" to "color" */
+    font-style: oblique;
+    font-variant: small-caps;
+}
+
+/* Additional specificity to ensure styles override Bootstrap */
+.navbar-nav .nav-item .nav-link {
+    color: var(--brand-dark);
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: var(--brand-brown);
+    color: var(--brand-white);
+    border-bottom: 2px solid var(--brand-white);
+}
+.navbar-brand img{
+    height: 25px;
+}

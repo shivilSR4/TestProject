@@ -1,0 +1,66 @@
+.body-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.otp-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ltext {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.otp-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.verify-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--brand-brown);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.verify-button:disabled {
+    cursor: not-allowed;
+    background-color: #a1cbe6;
+}
+
+.spinner-icon {
+    margin-right: 10px;
+}
+
+.mt-1 {
+    margin-top: 0.25rem;
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
