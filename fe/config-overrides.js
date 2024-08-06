@@ -1,8 +1,12 @@
-const { alias, configPaths } = require('react-app-rewire-alias');
+const path = require('path');
 
-console.log('Config paths:', configPaths('./jsconfig.json')); // Add this line to debug
+module.exports = function override(config, env) {
+  config.output = {
+    ...config.output,
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'static/js/[name].[contenthash:8].js',
+    chunkFilename: 'static/js/[name].[contenthash:8].chunk.js',
+  };
 
-module.exports = function override(config) {
-  alias(configPaths('./jsconfig.json'))(config);
   return config;
 };
