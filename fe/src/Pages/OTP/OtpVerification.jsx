@@ -30,7 +30,7 @@ function OtpVerification() {
     const verifyOtp = () => {
         setLoading(true);
         const data = { email, otp };
-        axios.post(`${process.env.REACT_APP_BASE_URL}auth/verifyOtp`, data)
+        axios.post(`${process.env.REACT_APP_BASE_URL}/auth/verifyOtp`, data)
             .then(res => {
                 
                 localStorage.setItem('token', res.data.token);
@@ -51,7 +51,7 @@ function OtpVerification() {
         dispatch(showhideLoader(true));
        const  mobileNumber = JSON.stringify(Number)
         const data = { email, mobileNumber };
-        axios.post(`${process.env.REACT_APP_BASE_URL}auth/resendopt`, data)
+        axios.post(`${process.env.REACT_APP_BASE_URL}/auth/resendopt`, data)
             .then((res) => {
                 dispatch(showhideLoader(false));
                 Successtoast('OTP resent successfully');

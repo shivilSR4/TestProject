@@ -27,7 +27,7 @@ function SignInWithGoogle() {
                         displayName: user.displayName,
                         idToken
                     };
-                    axios.post(`${process.env.REACT_APP_BASE_URL}auth/doLogin`, userData)
+                    axios.post(`${process.env.REACT_APP_BASE_URL}/auth/doLogin`, userData)
                         .then((res) => {
                             localStorage.setItem('token', res.data.token);
                             localStorage.setItem('user', JSON.stringify(res.data.user));

@@ -52,6 +52,7 @@ function Newcourt()
             }
         }).then((res)=>{
            Successtoast('New court added successfully')
+           window.location.reload()
           //  navigate('/home')
         }).catch((err)=>{
            Errortoast('Something went wrong')
