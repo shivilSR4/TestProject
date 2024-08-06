@@ -14,7 +14,7 @@ connectDB();
 const adminRouter = require('./routes/admin');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
-const courtRouter = require('./routes/court');
+const indexRouter = require('./routes/index.js');
 const paymentRouter = require('./routes/payment');
 
 app.use(cors({
@@ -30,12 +30,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
-app.use('/court', courtRouter);
 app.use('/payments', paymentRouter);
-
 app.use(function(req, res, next) {
   next(createError(404));
 });
