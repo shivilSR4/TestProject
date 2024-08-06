@@ -106,7 +106,8 @@ const doLogin = async (req, res) => {
           Name: decodedToken.name || displayName,
           email: googleEmail,
           mobileNumber: '', 
-          password: '' 
+          password: '' ,
+          status: 2
         });
 
         userData = await newUser.save();
