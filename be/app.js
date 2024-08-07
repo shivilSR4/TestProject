@@ -17,9 +17,14 @@ const authRouter = require('./routes/auth');
 const indexRouter = require('./routes/index.js');
 const paymentRouter = require('./routes/payment');
 
-app.use(cors({
-  origin: ['https://frontend-xb3d.onrender.com/' , 'http://localhost:3000' ]
-}));
+const corsOptions = {
+  origin: ['https://frontend-xb3d.onrender.com'],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
