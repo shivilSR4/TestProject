@@ -18,7 +18,7 @@ const indexRouter = require('./routes/index.js');
 const paymentRouter = require('./routes/payment');
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://your-deployed-url.onrender.com']
+  origin: ['http://localhost:3000', 'https://frontend-xb3d.onrender.com/']
 }));
 
 app.set('views', path.join(__dirname, 'views'));
