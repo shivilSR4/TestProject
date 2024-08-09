@@ -18,7 +18,7 @@ const indexRouter = require('./routes/index.js');
 const paymentRouter = require('./routes/payment');
 
 const corsOptions = {
-  origin: ['https://frontend-xb3d.onrender.com'],
+  origin: ['https://turfbooking-vn99.onrender.com'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 200
