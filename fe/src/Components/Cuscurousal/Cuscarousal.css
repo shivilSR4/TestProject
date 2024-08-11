@@ -1,7 +1,42 @@
-.Carousal-container{
+/* Carousal Container */
+.container {
     max-height: 100vh;
+    overflow: hidden; 
+    
+    /* Ensures no overflow from the container */
 }
-.Carousal-container img{
-    max-height: calc(100vh - 40px);
+
+/* Images inside the carousel */
+.container img {
+    height: 60vh; /* Adjust the height to your preference */
     object-fit: cover;
+    object-position: center; /* Ensures the image is centered */
+    border-radius: 10px;
+}
+
+/* Adjusting the caption for better visibility and positioning */
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.6); /* Adds a semi-transparent background to captions */
+    padding: 15px 25px;
+    border-radius: 8px;
+    bottom: 20px; /* Adjust the position of the caption */
+}
+
+/* Control buttons hover effect */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1); /* Inverts color for better contrast */
+}
+
+/* Custom styles for indicators */
+.carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent indicators */
+    transition: background-color 0.3s;
+}
+
+.carousel-indicators .active {
+    background-color: #fff; /* Solid white for active indicator */
 }

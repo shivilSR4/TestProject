@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import "./CourtDetailsBody.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import IMG from "../../Assets/download.jpeg";
+import IMG from "../../Assets/edgar-chaparro-cpoXIs2wygk-unsplash.jpg";
 import edit from "../../Assets/edit.svg";
 import files from "../../Assets/files.svg";
 import add from "../../Assets/add.svg";

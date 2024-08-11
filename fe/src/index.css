@@ -1,9 +1,9 @@
-:root{
-  --brand-dark: #973131;
- --brand-brown: #E0A75E;
- --brand-brown2: #bc771c;
---brand-light: #dbc493;
---brand-white: #f8f6f2;
+:root {
+  --brand-light: #4CAF50;
+  --brand-dark: #2E7D32;
+  --brand-brown: #8D6E63;
+  --brand-white: #FFFFFF;
+  --brand-accent: black;
 }
 
 *{
