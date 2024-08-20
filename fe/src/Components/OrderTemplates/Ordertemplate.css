@@ -1,0 +1,35 @@
+.order-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.order-card.selected {
+    background-color: #d4edda; /* Light green background when selected */
+    border-color: #c3e6cb; /* Green border when selected */
+}
+
+.order-details h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.order-details p {
+    margin: 4px 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.order-status p {
+    font-size: 1em;
+    font-weight: bold;
+    color: #4CAF50; /* Green color for status */
+}

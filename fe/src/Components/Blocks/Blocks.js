@@ -16,9 +16,9 @@ function Blocks() {
         <p>Are you looking to play after work, organize your Sunday five's football match? Explore the largest network of sports facilities whole over the India</p>
       </div>
 
-      <div className='d-flex flex-column text-center p-3 align-items-center'>
+      <div className='d-flex flex-column text-center p-3 align-items-center' onClick={()=>navigate('/showcourts')} style={{cursor:'pointer'}}>
         <img src={book}  alt='' />
-        <h3>ABCD</h3>
+        <h3>SHOW YOUR BOOKING STATUS</h3>
         <p>once you've found the perfect ground, court or Gym , Connect with the venue through the book now Button to make online booking & secure easier payment</p>
       </div>
 

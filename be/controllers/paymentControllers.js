@@ -36,6 +36,7 @@ const orders = async (req, res, next) => {
             slotIds: req.body.slotIds,
             totalCost: totalCost,
             bookedBy: req.userId,
+            bookingStatus: 'Booked'
         }).save();
 
         const options = {

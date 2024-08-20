@@ -24,7 +24,7 @@ function LoginBox({ setBoxtype }) {
     dispatch(showhideLoader(true));
     axios({
       method: 'POST',
-      url: process.env.REACT_APP_BASE_URL + '/auth/doLogin',
+      url: process.env.REACT_APP_BASE_URL + 'auth/doLogin',
       data: loginData,
     })
       .then((res) => {

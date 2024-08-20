@@ -1,6 +1,9 @@
+const { response } = require('../app')
 const COURTS = require('../Model/courtModel')
 const COURTSCHEDULE = require('../Model/courtSchedule')
+const ORDERS = require('../Model/ordersModel')
 const ObjectId = require('mongoose').Types.ObjectId
+const mongoose = require ('mongoose')
 
 const getAllCourtData = (req,res,next)=>{
      try {
@@ -63,11 +66,78 @@ const getSlotData = (req, res, next) => {
         res.status(500).json({ message: "Internal server error" });
       });
   } catch (error) {
-    // console.log(error);
+  
     res.status(500).json({ message: "Internal server error" });
     next();
   }
 };
 
 
-module.exports = {getAllCourtData,getSingleCourtData,getSlotData}
+
+
+const getOrderData = async (req, res) => {
+  try {
+    const userId = req.query.userId;
+
+    
+    const orders = await ORDERS.find({ bookedBy: userId });
+
+    if (!orders || orders.length === 0) {
+      return res.status(404).json({ message: 'No orders found for this user.' });
+    }
+
+    
+    const enrichedOrders = await Promise.all(
+      orders.map(async (order) => {
+        const court = await COURTS.findById(order.courtId);
+        
+       
+        const slots = await COURTSCHEDULE.find({ _id: { $in: order.slotIds } });
+     
+        const slotTimes = slots.map(slot => slot.slot.name);
+        const slotDate = slots.map(slot => slot.date);
+
+        return {
+          ...order._doc,
+          courtName: court.name,
+          courtLocation: court.location,
+          courtAddress: court.address1,
+          slotTimes, 
+          slotDate 
+        };
+      })
+    );
+
+    res.status(200).json(enrichedOrders);
+  } catch (error) {
+    console.error('Error fetching orders:', error.stack);
+    res.status(500).json({ message: 'Internal server error', error: error.message });
+  }
+};
+
+const orderCancel = async (req, res) => {
+  try {
+    const orderIds = req.body;  
+    
+    if (!orderIds || orderIds.length === 0) {
+      return res.status(400).json({ message: 'No order IDs provided' });
+    }
+
+    
+    const result = await ORDERS.deleteMany({ _id: { $in: orderIds } });
+
+ 
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: 'No orders found to delete' });
+    }
+
+   
+    res.status(200).json({ message: `${result.deletedCount} order(s) cancelled successfully` });
+  } catch (error) {
+    console.error('Error cancelling order:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+
+module.exports = {getAllCourtData,getSingleCourtData,getSlotData,getOrderData,orderCancel}

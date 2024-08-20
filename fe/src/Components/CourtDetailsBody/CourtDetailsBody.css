@@ -7,6 +7,24 @@
     height: 100%;
 }
 
+.selected-slot {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background: transparent;
+    color: #ff0000;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+
 .details-image {
     padding: 4px;
     height: 100%;

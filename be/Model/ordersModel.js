@@ -32,6 +32,9 @@ const orderSchema = mongoose.Schema({
     },
     slotDate:{
         type:Date
+    },
+    bookingStatus:{
+        type:String
     }
 })
 

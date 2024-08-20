@@ -8,6 +8,7 @@ import CourtDetailsBody from './CourtDetailsBody/CourtDetailsBody'
 import CourtDetailsPage from 'Pages/CourtDetailsPage/CourtDetailsPage'
 import Profile from 'Pages/Profile/Profile'
 import OtpVerification from 'Pages/OTP/OtpVerification'
+import Showdetails from 'Pages/showDetails/Showdetails'
 
 function Routing() {
   return (
@@ -17,6 +18,7 @@ function Routing() {
             <Route path='/home' element={<Home />} />
             <Route path='/profile' element={<Profile />}/>
             <Route path='/otp' element={<OtpVerification />}/>
+            <Route path='/showcourts' element={<Showdetails />}/>
 
             <Route path='/courts'>
 

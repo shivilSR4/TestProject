@@ -65,7 +65,7 @@ function SignupBox({ setBoxtype }) {
 
     axios({
       method: 'POST',
-      url: process.env.REACT_APP_BASE_URL + '/auth/doSignup',
+      url: process.env.REACT_APP_BASE_URL + 'auth/doSignup',
       data: signupData
     })
       .then((res) => {
